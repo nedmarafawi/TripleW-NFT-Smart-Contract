@@ -6,8 +6,9 @@
 
 
 ## 🔖 About The Project
-You know those websites where people are making millions of dollars where users can come and "mint" an NFT? This is basically the project.
-Your will let users connect their Ethereum wallet, and mint an NFT to their wallet so they actually own it. They'll even be able to re-sell the NFT on OpenSea.
+<!-- You know those websites where people are making millions of dollars where users can come and "mint" an NFT? This is basically the project.
+Your will let users connect their Ethereum wallet, and mint an NFT to their wallet so they actually own it. They'll even be able to re-sell the NFT on OpenSea. -->
+TripleW #001 is an NFT project consisting of 50 randomly generated three-word combination. Each piece is a unique, one-of-a-kind, and really funny.
 
 ### 🧰 Built with
 <ul>
