@@ -1,14 +1,23 @@
-import './styles/App.css';
-import twitterLogo from './assets/twitter-logo.svg';
 import React, { useEffect, useState } from 'react';
+import twitterLogo from './assets/twitter-logo.svg';
+import myEpicNft from './utils/MyEpicNFT.json';
+import nftGif from './assets/nft.gif';
+import './styles/App.css';
 
 import { ethers } from 'ethers';
 
-import myEpicNft from './utils/MyEpicNFT.json';
+import {
+  FaWallet,
+  FaCheckCircle,
+  FaCheck,
+  FaRegGem,
+  FaThLarge,
+  FaQrcode,
+} from 'react-icons/fa';
 
-import nftGif from './assets/nft.gif';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-// import { useLoading, Grid } from '@agney/react-loading';
+import { useLoading, Grid } from '@agney/react-loading';
 
 // Constants
 const TWITTER_HANDLE = 'nedmarafawi';
@@ -33,6 +42,7 @@ const App = () => {
   const [mintCount, setMintCount] = useState(0);
   const [openSeaLink, setOpenSeaLink] = useState(OPENSEA_COLLECTION_LINK);
   const [etherScanLink, setEtherScanLink] = useState('');
+  const [isCopied, setIsCopied] = useState(false);
 
   // Make sure this is async.
   const checkIfWalletIsConnected = async () => {
@@ -208,7 +218,8 @@ const App = () => {
           onClick={connectWallet}
           className="cta-button connect-wallet-button"
         >
-          Connect Wallet
+          <FaWallet />
+          &nbsp; Connect Wallet
         </button>
       );
     }
@@ -216,11 +227,21 @@ const App = () => {
       <button
         onClick={askContractToMintNft}
         className="cta-button mint-button"
+        title="Mint an NFT"
         disabled={isLoading || mintCount === TOTAL_MINT_COUNT}
       >
+        <FaRegGem />
+        &nbsp;
         {isLoading ? 'Mining...please wait!' : 'Mint NFT'}
       </button>
     );
+  };
+
+  const onCopyText = () => {
+    setIsCopied(true);
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 1000);
   };
 
   const navigateToOpenSea = () => {
@@ -256,67 +277,102 @@ const App = () => {
     <div className="App">
       <div className="container">
         <div className="header-container">
-          <p className="header gradient-text">My NFT Collection</p>
-          <p className="sub-text">
-            Each unique. Each beautiful. Discover your NFT today.
-          </p>
-          <button
-            onClick={navigateToOpenSea}
-            className="cta-button opensea-button"
-          >
-            View collection on OpenSea
-          </button>
-          {/* <div className="gif-bg-color"> */}
-          <img
-            src={nftGif}
-            alt="NFT demo GIF"
-            className="nft-gif gif-bg-color "
-          />
-          {/* </div> */}
-          {mintCount < TOTAL_MINT_COUNT && (
-            <p className="mint-count">
-              {mintCount} / {TOTAL_MINT_COUNT} Minted
+          <div className="header gradient-text ">
+            TRIPLE
+            <div className="gradient-text4">W&nbsp;</div>
+            <div className="gradient-text1">N</div>
+            <div className="gradient-text2">F</div>
+            <div className="gradient-text3">T</div>
+          </div>
+          {/* <p className="sub-text">Mint before it’s too late!</p> */}
+
+          <div className="bg-container">
+            <img
+              src={nftGif}
+              alt="NFT demo GIF"
+              className="nft-gif gif-bg-color "
+            />
+
+            {mintCount < TOTAL_MINT_COUNT && (
+              <p className="mint-count">
+                {mintCount} / {TOTAL_MINT_COUNT} claimed
+              </p>
+            )}
+            {mintCount === TOTAL_MINT_COUNT && (
+              <p className="mint-count">Sold out!</p>
+            )}
+            <p className="about">
+              TRIPLEW #01 is an NFT project consisting of 50 randomly generated
+              three-word combination.
+              {/* TRIPLEW #001 is an NFT project consisting of 50 randomly
+              generated three-word combination. Each piece is a unique,
+              one-of-a-kind, and really funny. */}
             </p>
-          )}
-          {mintCount === TOTAL_MINT_COUNT && (
-            <p className="mint-count">Sold out!</p>
-          )}
-          {getButton()}
-          {currentAccount !== '' && (
-            <p className="wallet-address-text">
-              {currentAccount} is connected!
-            </p>
-          )}
-          {/* add success-message in CSS */}
-          {isSuccessful && (
-            <div className="success-message">
-              <div className="success-message-color">
-                <p>Successful Mint! 🥳</p>
+            {getButton()}
+            <button
+              onClick={navigateToOpenSea}
+              className="cta-button opensea-button"
+              title="View collection on OpenSea"
+            >
+              <FaThLarge />
+              &nbsp; View collection on OpenSea
+            </button>
+            {currentAccount !== '' && (
+              <>
+                {/* <p className="wallet-address-title">Current Wallet:</p> */}
+                <p className="wallet-address-text">
+                  {/* <FaQrcode /> */}
+                  <div className="copy-action">
+                    <CopyToClipboard
+                      onCopy={onCopyText}
+                      text={currentAccount}
+                      title="Current wallet connected"
+                    >
+                      <span>{isCopied ? 'Copied!' : `${currentAccount}`}</span>
+                    </CopyToClipboard>
+                  </div>
+                  {/* <div className="wallet-checkmark">
+                    <FaCheckCircle />
+                  </div> */}
+                </p>
+              </>
+            )}
+            {isSuccessful && (
+              <div className="success-message ">
+                <div className="success-message-color">
+                  <div className="wallet-checkmark">
+                    {/* <FaCheckCircle /> */}
+                  </div>
+                  <p>
+                    <FaCheck />
+                    &nbsp; Congratulations! You've just minted an NFT
+                  </p>
+                </div>
+                <p>
+                  View your NFT on&nbsp;
+                  <a
+                    className="openSea-link"
+                    href={openSeaLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    OpenSea
+                  </a>
+                </p>
+                <p>
+                  See your transaction on&nbsp;
+                  <a
+                    className="etherScan-link"
+                    href={etherScanLink}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Etherscan
+                  </a>
+                </p>
               </div>
-              <p>
-                See your transaction on&nbsp;
-                <a
-                  className="etherScan-link"
-                  href={etherScanLink}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  EtherScan
-                </a>
-              </p>
-              <p>
-                View your NFT on&nbsp;
-                <a
-                  className="openSea-link"
-                  href={openSeaLink}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  OpenSea
-                </a>
-              </p>
-            </div>
-          )}
+            )}
+          </div>
           {/* {currentAccount === ''
             ? renderNotConnectedContainer()
             : renderMintUI()} */}
