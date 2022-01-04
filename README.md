@@ -1,7 +1,9 @@
 <h1 align="center">TripleW NFT - Smart Contract</h1>
 <p align="center">Mint Your Own NFT Collection</p>
 
-
+<kbd>
+  <img src="https://user-images.githubusercontent.com/70671308/148095467-97dcf02c-6bf0-4742-b1f3-1b0ee7823083.gif">
+</kbd>
 
 
 
@@ -46,18 +48,28 @@ npx hardhat run scripts/deploy.js --network rinkeby
 The NFT you just minted will be on <a href="https://testnets.opensea.io/">OpenSea's TestNet</a> site.
 
 ### Step 5 - Verify
+Verify your code with Etherscan.<br>
 ```
-npx hardhat verify {Your awesome contract address} --network rinkeby
+npx hardhat verify {Your Contract Address} --network rinkeby
 ```
+
+## 🔎 If your NFTs aren't showing up on OpenSea
+if you don't see your NFT on OpenSea within a few minutes, try Rarible. Rarible is another NFT marketplace like OpenSea.<br></br>
+Here's how to set it up:<br>
+1. Head to ``rinkeby.rarible.com``.
+2. Create this url: https://rinkeby.rarible.com/token/INSERT_DEPLOY_CONTRACT_ADDRESS_HERE:INSERT_TOKEN_ID_HERE.
+
+
+## ‼️ Important
+Anytime you change your contract. You need to do 3 things: <br>
+ 1. You need to deploy it again.
+ 2. You need to update the contract address on your frontend.
+ 3. You need to update the abi file on your frontend.
 
 
 ## ❤️ Thanks
-
-<a href="https://buildspace.so/">Buildspace</a> team, <a href="https://twitter.com/FarzaTV">@Farza</a> and the whole community.
-
-What an amazing project to contribute into the future of web3.
+This project is built following the Buildspace Projects NFT Collection guide.<br></br>
+Thanks to <a href="https://buildspace.so/">Buildspace</a> team, <a href="https://twitter.com/FarzaTV">@Farza</a> and the whole community. What an amazing project to contribute into the future of web3.
 
 ## 📄 License
 Distributed under the MIT License. See ``LICENSE`` for more information.
-# TripleW-NFT-Smart-Contract
-# TripleW-NFT-Smart-Contract
