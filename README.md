@@ -57,7 +57,10 @@ npx hardhat verify {Your Contract Address} --network rinkeby
 if you don't see your NFT on OpenSea within a few minutes, try Rarible. Rarible is another NFT marketplace like OpenSea.<br></br>
 Here's how to set it up:<br>
 1. Head to ``rinkeby.rarible.com``.
-2. Create this url: https://rinkeby.rarible.com/token/INSERT_DEPLOY_CONTRACT_ADDRESS_HERE:INSERT_TOKEN_ID_HERE.
+2. Create this url: <br>
+```
+https://rinkeby.rarible.com/token/INSERT_DEPLOY_CONTRACT_ADDRESS_HERE:INSERT_TOKEN_ID_HERE
+```
 
 
 ## ‼️ Important
